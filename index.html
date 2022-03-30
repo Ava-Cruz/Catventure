@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&family=Noto+Serif+Display:wght@500&family=Playfair+Display:ital,wght@1,900&display=swap" rel="stylesheet">
+        <title>Catventure</title>
+
+        <style>
+            body{
+                width: 100%;
+                height: 100%;
+                background-image: url("titlebg.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            h1{
+                text-align: center;
+                font-family: 'Playfair Display', serif;
+                font-size: 250px;
+                margin-top: 20px;
+                padding: 0;
+                color: #dfcfac;
+                text-shadow: 8px 8px #866255;
+            }
+
+            .start{
+                margin: 0;
+                position: absolute;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                width: 550px;
+                text-align: center;
+                margin-top: 0;
+                font-size: 170px;
+                border-radius: 30px;
+                color: #866255;
+                background-color: #eae5d9;
+                border: 20px solid #dfcfac;
+                font-family: 'Noto Serif Display', serif;
+            }
+
+            .otherbtns{
+                margin-left: 200px;
+                margin-top: 350px;
+            }
+
+            .walk{
+                margin-right: 200px;
+                width: 560px;
+                height: 220px;
+                text-align: center;
+                font-size: 90px;
+                color: #866255;
+                background-color: #eae5d9;
+                border: 20px solid #dfcfac;
+                font-family: 'League Spartan', sans-serif;
+                border-radius: 30px;
+            }
+
+            .devpage{
+                margin-left: 200px;
+                position: absolute;
+                width: 560px;
+                height: 220px;
+                text-align: center;
+                font-size: 90px;
+                color: #866255;
+                background-color: #eae5d9;
+                border: 20px solid #dfcfac;
+                font-family: 'League Spartan', sans-serif;
+                border-radius: 30px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Catventure</h1>
+
+        <button type="button" class="start" onclick="window.location='mainDoor.html'">start</button>
+
+        <div class="otherbtns">
+            <button type="button" class="walk" onclick="window.location='walkthrough.html'">walkthrough</button>
+            <button type="button" class="devpage" onclick="window.location='devpage.html'">developers page</button>
+        </div>
+    </body>
+
+</html>

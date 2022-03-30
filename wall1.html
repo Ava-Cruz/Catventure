@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Catventure</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
+  <style>
+
+      body {
+          width:100%;
+          height:100%;
+          background-image: url("wall1.png");
+          background-repeat:no-repeat;
+          background-size:100% 100%;
+      }
+
+      #main {
+          width:1920px;
+          height:1080px;
+          padding:0px;
+      }
+
+      #countdown {
+          font-size:90px;
+          margin-left:1645px;
+          margin-top:10px;
+      }
+
+      #code {
+          margin-left:1010px;
+          margin-top:45px;
+      }
+
+      form {
+          width: 215px;
+          float:left;
+      }
+
+      input {
+          padding:0px;
+          border:0px;
+          height:215px;
+          width:100%;
+          margin-bottom:65px;
+          background-color:#DEAF5F;
+          border:solid 8px lightgoldenrodyellow;
+          border-radius:50%;
+          opacity:0;
+      }
+
+      #paw {
+          margin-top:10px;
+      }
+
+      input[type="number"]{
+          font-size:100px;      
+          text-align:center;
+      }
+
+      #submit {
+          margin-left:260px;
+          margin-top:265px;
+      }
+      
+      button {
+          background-color: transparent;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          border: 0;
+      }
+      
+      #img1 {
+          height: 60px;
+          margin: 10px;
+      }
+      
+      #img2 {
+          height: 60px;
+          margin: 10px;
+      }
+      
+      #img3 {
+          height: 60px;
+          margin-left: 100px;
+      }
+      
+      .button {
+          height: 70px;
+          margin: 40px;
+      }
+      
+      #cabinet {
+          margin-top: 270px;
+          margin-left: 900px;
+      }
+  </style>
+    
+  <script> 
+    var calendar = false;
+    var lock = false;
+    setInterval(minutesFunction, 1000);
+    setInterval(secondsFunction, 1000);
+    setInterval(countdown, 1000);
+    setInterval(storage, 1000);
+    var minutes;
+    var seconds;
+    var storeMinutes = sessionStorage.getItem("timeMinutes");
+    var storeSeconds = sessionStorage.getItem("timeSeconds");
+
+    function storage(){
+      sessionStorage.setItem("timeMinutes", String(minutes));
+      sessionStorage.setItem("timeSeconds", String(seconds));
+      storeMinutes = parseInt(sessionStorage.getItem("timeMinutes"));
+      storeSeconds = parseInt(sessionStorage.getItem("timeSeconds"));
+    }
+
+    function minutesFunction() {
+        minutes = storeMinutes;
+
+        if (seconds == 0 && minutes > 0) {
+
+          minutes--;
+
+          if (minutes < 10) {
+            minutes = "0" + minutes;
+          }
+        }
+    }
+
+    function secondsFunction(){
+        seconds = storeSeconds;
+
+        if (seconds == 0 && minutes > 0) {
+          seconds = 60
+        }
+
+        seconds--;
+        
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+    }
+    
+    function countdown(){
+      if (minutes >= 0 && seconds >= 0) {
+        document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
+      } else {
+        window.location="lose.html";
+      }
+    }
+      
+    function checkClick(event){  
+        var x = event.clientX;
+        var y = event.clientY;
+        if(x>=25 && y>=500 && x<=109 && y<=616) {
+          if (!calendar && !lock){
+          window.location="mainDoor.html";
+          }
+        } 
+        
+        else if (x>=1810 && y>=500 && x<=1906 && y<=616) {
+          if (!calendar && !lock){
+          window.location="pianoRoom.html";
+          }
+        } 
+        
+        else if (x>=740 && y>=288 && x<=1763 && y<=1024) {
+          if (!calendar && !lock){
+            if (sessionStorage.getItem("solvedCabinet") == "true"){
+              window.location="openwall1zoom.html";
+            } else {
+              window.location="wall1zoom.html";
+            }          
+          }
+        } 
+    }
+  </script>
+</head>
+    
+<body id="body">
+
+<div id="main" class="container-fluid" onclick="checkClick(event)">
+  <h1 id="countdown">
+    00:00
+  </h1>
+</div>
+</body>
+</html>
