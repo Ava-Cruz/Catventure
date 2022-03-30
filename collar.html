@@ -99,7 +99,11 @@
                     } 
                     
                      else if(x>=903 && y>=560 && x<=1015 && y<=755){
-                        window.location="diary.html"
+                        if (sessionStorage.getItem("solvedDiary") == "true") {
+                            window.location="dopen.html";
+                        } else {
+                            window.location="diary.html";
+                        }
                     }
                 }
             </script>
